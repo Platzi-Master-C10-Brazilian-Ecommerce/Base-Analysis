@@ -1,7 +1,21 @@
-# Base-Analysis
+# Brazilian e-commerce Base Analysis
 
-Platzi Master Cohort 10 Business Intelligence Group Repository
+[Platzi Master](https://platzi.com/master/) Cohort 10 project of the Bussiness Intelligence Squad 
 
-Project number 1 of Platzi Master Cohort 10, business intelligence, consists of a Base Analysis of the Brazilian e-commerce data set. With which to put this data into a production ready schema deployed in a cloud service. 
+## Table of Contents
+1. [Our Team](#our-team) 
+2. [About the analysis](#About-the-analysis)
 
-As well as performing interesting analyses for training as analysts and data scientists. 
+****
+
+## Our team
+- [Julián Castro](https://www.linkedin.com/in/jcasttrop/)
+- [Ricardo Escamilla]()
+- [Emmanuel Escobar]()
+- [Marco Rocha]()
+### Technical support
+- [Luis Fernando Laris Pardo]()
+
+***
+
+### About the analysis
