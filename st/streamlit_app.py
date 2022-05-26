@@ -6,6 +6,7 @@ import psycopg2
 from sqlalchemy import create_engine
 from PIL import Image
 
+#Datos para conexion a DB
 host1 = 'platzicohort10@platzicohort10.cig2rbjhhqmz.us-east-1.rds.amazonaws.com'
 user1 = 'usuario_consulta'
 password1 = 'platzicohort10'
@@ -16,6 +17,7 @@ engine = create_engine('postgresql+psycopg2://'+
                        host1+'/'+
                        database1)
 
+#Funcion para consultas
 def query_psql(consulta):
     with engine.connect() as con:
       rs = con.execute(consulta)
@@ -25,6 +27,7 @@ def query_psql(consulta):
       df.columns = cols
     return df
 
+#Crear conexion y generar una consulta a la DB
 with engine.connect() as con:
     rs = con.execute("""SELECT * FROM pg_catalog.pg_tables 
                       WHERE schemaname != 'pg_catalog' 
@@ -76,18 +79,19 @@ fig4, ax4 = plt.subplots(figsize=(10, 5))
 sns.set_style("dark")
 ax4 = sns.lineplot(data=dfplot4)
 
-st.title('Brazilian e-comerce cohort 10')
-image = Image.open('activitylist.png')
-st.image(image)
+#Codigo de streamlit
+st.title('Brazilian e-comerce cohort 10') #Para agregar titulos
+image = Image.open('activitylist.png') 
+st.image(image) #Para agregar imagenes
 
-st.write("[Notion of the activities](https://www.notion.so/3250b16f6a7b47eab7644abbe65fd9ac?v=33d926d3d43b46c6b4abe028a2d42e1f)")
+st.write("[Notion of the activities](https://www.notion.so/3250b16f6a7b47eab7644abbe65fd9ac?v=33d926d3d43b46c6b4abe028a2d42e1f)") #Para agregar links
 
 
-st.text('Count of sales by year')
+st.text('Count of sales by year') #Mostrar texto
 code = '''dfplot = df_ord.groupby(df_ord['order_purchase_timestamp'].dt.year).count()'''
-st.code(code, language='python')
-st.dataframe(data=dfplot)
-st.pyplot(fig)
+st.code(code, language='python') #Mostrar codigo 
+st.dataframe(data=dfplot) #Mostrar dataframe
+st.pyplot(fig) #Mostrar figura generada en seaborn
 
 st.text('Count of sales by day')
 st.dataframe(data=dfplot2)
