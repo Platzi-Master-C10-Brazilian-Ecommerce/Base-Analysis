@@ -62,29 +62,45 @@ df_order = pd.merge(left = order_items, right = orders,
 
 df_ord = df_order.sort_values(by='order_purchase_timestamp') 
 df_ord.index = df_ord.order_purchase_timestamp
-dfplot = df_ord.groupby(df_ord['order_purchase_timestamp'].dt.year).count()
 
 #Llama a la funcion a graficar (dfplot)
 
-dfplot.plot(figsize=(30,15))
-fig, ax = plt.subplots(figsize=(10, 5))
-sns.set_style("dark")
-ax = sns.lineplot(data=dfplot)
+def plot1():
 
-dfplot2 = df_ord.resample('D').count()
-dfplot2.plot(figsize=(30,15))
-fig2, ax2 = plt.subplots(figsize=(10, 5))
-sns.set_style("dark")
-ax2 = sns.lineplot(data=dfplot2)
+  dfplot = df_ord.groupby(df_ord['order_purchase_timestamp'].dt.year).count()
 
-dfplot3 = df_ord.resample('D').mean()
-dfplot3.plot(figsize=(30,15))
-fig3, ax3 = plt.subplots(figsize=(10, 5))
-sns.set_style("dark")
-ax3 = sns.lineplot(data=dfplot3)
+  dfplot.plot(figsize=(30,15))
+  fig, ax = plt.subplots(figsize=(10, 5))
+  sns.set_style("dark")
+  ax = sns.lineplot(data=dfplot)
 
-dfplot4 = df_ord.resample('D').median()
-dfplot4.plot(figsize=(30,15))
-fig4, ax4 = plt.subplots(figsize=(10, 5))
-sns.set_style("dark")
-ax4 = sns.lineplot(data=dfplot4)
+  return fig, dfplot
+
+def plot2():
+  dfplot2 = df_ord.resample('D').count()
+  dfplot2.plot(figsize=(30,15))
+  fig2, ax2 = plt.subplots(figsize=(10, 5))
+  sns.set_style("dark")
+  ax2 = sns.lineplot(data=dfplot2)
+
+  return dfplot2, fig2
+
+
+def plot3():
+  dfplot3 = df_ord.resample('D').mean()
+  dfplot3.plot(figsize=(30,15))
+  fig3, ax3 = plt.subplots(figsize=(10, 5))
+  sns.set_style("dark")
+  ax3 = sns.lineplot(data=dfplot3)
+
+  return dfplot3, fig3
+
+
+def plot4():
+  dfplot4 = df_ord.resample('D').median()
+  dfplot4.plot(figsize=(30,15))
+  fig4, ax4 = plt.subplots(figsize=(10, 5))
+  sns.set_style("dark")
+  ax4 = sns.lineplot(data=dfplot4)
+
+  return dfplot4, fig4
