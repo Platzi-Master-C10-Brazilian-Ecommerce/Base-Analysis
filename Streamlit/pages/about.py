@@ -16,7 +16,7 @@ st.set_page_config(page_title="Bussines Intelligence Team",page_icon="🪙",layo
 
 
 a1, a2 = st.columns(2)
-a1.image(Image.open('PM_LOGO.jpg'))
+a1.image(Image.open('Data-Analysis-for-Brazilian-E-commerce\Streamlit\pages\Images\PM_LOGO.jpg'))
 with a2:
     st.markdown('''# Platzi Master Cohort 10
     Bussines Intelligence Team
