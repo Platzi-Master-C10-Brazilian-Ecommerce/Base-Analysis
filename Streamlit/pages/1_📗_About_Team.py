@@ -23,4 +23,5 @@ with a2:
     - Julián Castro     - Ricardo Escamilla
     - Emmanuel Escobar  - Marco Rocha
     ''')
-    a2.metric("2017-2018 Growth",format(products_Maximun["%Growth"].iloc[0],'.2f')+'%')
+   
+   
