@@ -19,7 +19,7 @@ A, B, C = st.columns(3)
 
 A.image(Image.open("Streamlit/Images/PM_logo.png"))
 
-with B:
+with C:
     st.markdown('''# Platzi Master Cohort 10
     Bussines Intelligence Team
     - Julián Castro     - Ricardo Escamilla
@@ -27,7 +27,33 @@ with B:
     - Juan Rincon       - Robert Barrios
     ''')
 
-with C:
+with B:
     st.text("MIMIM")
 
 
+#-------------------------------------------------------#
+
+D,E = st.columns(2)
+
+with D:
+    D.markdown("Papel del BI")
+    D.header("Analisis de mercado")
+with F:
+    F.markdown("")
+
+
+#---------------------------------------------------------#
+
+G, H, I = st.columns(3)
+
+st.header("Paretos Law")
+
+with G:
+    G.markdown("pass")
+
+with H:
+    pareto_code = ""
+    H.code(pareto_code, language="Python")
+
+with I: 
+    I.markdown("conclusiones")
