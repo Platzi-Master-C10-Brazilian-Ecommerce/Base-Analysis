@@ -13,7 +13,7 @@ from PIL import Image
 
 # Configuración de la pagina
 st.set_page_config(page_title="Bussines Intelligence Team",page_icon="🪙",layout="wide")
-st.sidebar.success("Select a demo above.")
+st.sidebar.success("Paginas")
 
 
 a1, a2 = st.columns(2)
@@ -23,6 +23,7 @@ with a2:
     Bussines Intelligence Team
     - Julián Castro     - Ricardo Escamilla
     - Emmanuel Escobar  - Marco Rocha
+    - Juan Rincon       - Robert Barrios
     ''')
    
 
