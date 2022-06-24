@@ -38,8 +38,8 @@ D,E = st.columns(2)
 with D:
     D.markdown("Papel del BI")
     D.header("Analisis de mercado")
-with F:
-    F.markdown("")
+with E:
+    E.markdown("")
 
 
 #---------------------------------------------------------#
