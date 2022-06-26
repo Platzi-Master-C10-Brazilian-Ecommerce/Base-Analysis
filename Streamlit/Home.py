@@ -102,19 +102,80 @@ with E:
 
 #---------------------------------------------------------#
 
-G, H, I = st.columns(3)
+G, H, I, J = st.columns(4)
 
 st.header("Paretos Law")
 
 with G:
-    G.markdown("pass")
+    products_sold = df_clean.groupby(['product_id'], as_index=False)['payment_value'].count().rename(columns = {'payment_value':'total_orders'})
+
+#Creamos una columna en la cual podamos ver el porcentaje
+    products_sold['%'] = round((products_sold['total_orders'] / products_sold['total_orders'].sum()) * 100, 2)
+
+#Traemos a colación los 10 más grandes
+    products_sold10 = products_sold.nlargest(10, 'total_orders')
+
+
+    ###ESTO PUEDE DAR ERROR PORQUE ES UN DICT
+    G.write(products_sold10)
 
 with H:
-    pareto_code = ""
-    H.code(pareto_code, language="Python")
+    
+    dict = {'index': 'review_score','review_score': 'Count'}
+
+    total_reviews = pd.DataFrame(df_clean['review_score'].value_counts().reset_index().rename(columns=dict).sort_values(by=['review_score'],ascending=True))
+    total_reviews['%'] = round((total_reviews['review_score'] / total_reviews['review_score'].sum()) * 100, 2)
+
+    fig = plt.figure(figsize =([14, 14])) 
+    sns.set_style('darkgrid')
+    plt.style.use('ggplot')
+    colors = sns.color_palette('pastel')[0:5]
+    explode = [0, 0, 0, 0, 0.06]
+
+    plt.pie(total_reviews["Count"], labels = total_reviews["review_score"], colors = colors,explode = explode, autopct='%.0f%%')
+    plt.show()
+
+    H.write(fig)
 
 with I: 
-    I.markdown("conclusiones")
+    dict = {'index': 'customer_state','customer_state': 'Count'}
+    total_customer_state = pd.DataFrame(df_clean['customer_state'].value_counts().reset_index().rename(columns=dict).sort_values(by=['Count'],ascending=False))
+
+    fig = plt.figure(figsize =([12, 12])) 
+    sns.set_style('darkgrid')
+    plt.style.use('ggplot')
+    g = sns.barplot(x=total_customer_state['customer_state'], y=total_customer_state['Count'], palette='Greens_r', orient="v")
+    plt.title('Distribución de consumidores por Estado', size=36, y=1.03)
+    plt.yticks(fontsize=18, color='gray');
+    plt.ylabel('Número de clientes', fontsize=24)
+    plt.xlabel('Estados', fontsize=24)
+    plt.xticks(fontsize=18, rotation=45)
+    g.spines['top'].set_visible(False)
+    g.spines['right'].set_visible(False)
+    plt.show()
+
+    I.write(fig)
+
+
+with J:
+    total_payment_value = pd.DataFrame(df_clean.groupby(by=["customer_state"])["payment_value"].sum().reset_index().sort_values(by=['payment_value'],ascending=False))
+    total_payment_value
+
+    fig = plt.figure(figsize =([14, 14])) 
+    sns.set_style('darkgrid')
+    plt.style.use('ggplot')
+    g = sns.barplot(x=total_payment_value['customer_state'], y=total_payment_value['payment_value'], palette='Greens_r', orient="v")
+    plt.title('Total de dinero Facturado por Estado', size=36, y=1.03)
+    plt.yticks(fontsize=18, color='gray');
+    plt.ylabel('Dinero Facturado', fontsize=24)
+    plt.ticklabel_format(style='plain', axis='y')
+    plt.xlabel('Estado', fontsize=24)
+    plt.xticks(fontsize=18, rotation=45)
+    g.spines['top'].set_visible(False)
+    g.spines['right'].set_visible(False)
+    plt.show()
+
+    J.write(fig)
 
 #---------------------------------------------------------#
 
