@@ -8,3 +8,10 @@ plost
 jinja2
 numpy
 plotly
+
+
+sqlalchemy
+psycopg2-binary
+matplotlib
+seaborn
+plotly
