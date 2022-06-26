@@ -62,9 +62,6 @@ frequent_itemsets = apriori(onehot, min_support = 0.00001, max_len = 2, use_coln
 
 from mlxtend.frequent_patterns import association_rules
 
-
-rules = association_rules(frequent_itemsets, metric = 'support', min_threshold = 0.0001)
-
 rules = association_rules(frequent_itemsets, metric = 'confidence', min_threshold = 0.01)
 
 rules = rules[rules['consequent support'] > 0.095]
