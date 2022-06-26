@@ -23,15 +23,50 @@ st.set_page_config(page_title="Bussines Intelligence Team",page_icon="📈",layo
 from mlxtend.preprocessing import TransactionEncoder
 
 
-translations = 
+translations = pd.read_csv("Streamlit/Datasets/product_category_name_translation.csv")
 
-products = 
+products =  pd.read_csv("Streamlit/Datasets/olist_products_dataset.csv")
 
-orders = 
+orders =  pd.read_csv("Streamlit/Datasets/olist_orders_dataset.csv")
+
+#Poner los nombres en inglés
+products = products.merge(translations, on='product_category_name', how="left")
+orders = orders.merge(products[['product_id','product_category_name_english']], on='product_id', how='left')
+orders.dropna(inplace=True, subset=['product_category_name_english'])
 
 
+transactions = orders.groupby("order_id").product_category_name_english.unique()
+#Aqui asumimos que solo vaya a haber una compra de la categoria
+
+transactions = transactions.tolist()
+
+counts = [len(transaction) for transaction in transactions]
+
+encoder = TransactionEncoder()
 
 
+encoder.fit(transactions)
+
+# Transform lists into one-hot encoded array.
+onehot = encoder.transform(transactions)
+
+# Convert array to pandas DataFrame.
+onehot = pd.DataFrame(onehot, columns = encoder.columns_)
+
+from mlxtend.frequent_patterns import apriori
+
+frequent_itemsets = apriori(onehot, min_support = 0.00001, use_colnames=True)
+
+frequent_itemsets = apriori(onehot, min_support = 0.00001, max_len = 2, use_colnames = True)
+
+from mlxtend.frequent_patterns import association_rules
+
+
+rules = association_rules(frequent_itemsets, metric = 'support', min_threshold = 0.0001)
+
+rules = association_rules(frequent_itemsets, metric = 'confidence', min_threshold = 0.01)
+
+rules = rules[rules['consequent support'] > 0.095]
 
 
 
@@ -88,10 +123,10 @@ J, K ,L = st.columns(3)
 with J:
     st.markdown('Regla de asociación')
     bar7 = go.Figure(data=[go.Table(
-        header=dict(values=list(churn.columns),
+        header=dict(values=list(rules.columns),
                     fill_color='darkblue',
                     align='center'),
-        cells=dict(values=[churn.Orders, churn.Customers, churn.Percentage],
+        cells=dict(values=[rules.antecedents, rules.consequents, rules.support],
                 fill_color='DarkSlateBlue',
                 align='center'))])
 
