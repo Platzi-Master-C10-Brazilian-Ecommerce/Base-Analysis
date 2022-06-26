@@ -73,6 +73,7 @@ D,E = st.columns(2)
 with D:
     D.markdown("Papel del BI")
     D.header("Analisis de mercado")
+
 with E:
     E.markdown("")
 
@@ -95,6 +96,8 @@ with E:
     g.spines['top'].set_visible(False)
     g.spines['right'].set_visible(False)
     plt.show()
+
+    E.write(fig)
 
 
 #---------------------------------------------------------#
