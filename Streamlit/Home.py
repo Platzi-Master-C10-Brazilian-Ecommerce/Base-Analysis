@@ -18,54 +18,31 @@ from PIL import Image
 st.set_page_config(page_title="Bussines Intelligence Team",page_icon="📈",layout="wide")
 
 
-#Datos importados
+# Segmentación de mercado
 
-#Para el a priori
-from mlxtend.preprocessing import TransactionEncoder
+customers = pd.read_csv("Streamlit/Datasets/olist_customers_dataset.csv")
+sellers = pd.read_csv("Streamlit/Datasets/olist_sellers_dataset.csv")
+orders_reviews = pd.read_csv("Streamlit/Datasets/olist_order_reviews_dataset.csv")
+order_items = pd.read_csv("Streamlit/Datasets/olist_order_items_dataset.csv")
+products = pd.read_csv("Streamlit/Datasets/olist_products_dataset.csv")
+geolocation = pd.read_csv("Streamlit/Datasets/olist_geolocation_dataset.csv")
+category_name_translation = pd.read_csv("Streamlit/Datasets/product_category_name_translation.csv")
+orders = pd.read_csv("Streamlit/Datasets/olist_orders_dataset.csv")
+orders_payments = pd.read_csv("Streamlit/Datasets/olist_order_payments_dataset.csv")
 
+#Clientes con las ordenes
 
-translations = pd.read_csv("Streamlit/Datasets/product_category_name_translation.csv")
+clients_total = pd.merge(customers, orders, on='customer_id')
+orders_total = pd.merge(orders_payments, orders_reviews, on='order_id')
+df_clients = pd.merge(clients_total, orders_total, on='order_id')
 
-products =  pd.read_csv("Streamlit/Datasets/olist_products_dataset.csv")
+#Vendedores con los productos
 
-orders =  pd.read_csv("Streamlit/Datasets/olist_orders_dataset.csv")
+sellers_total = pd.merge(sellers, order_items, on='seller_id')
+products_total = pd.merge(products, category_name_translation, on='product_category_name')
+df_products = pd.merge(sellers_total, products_total, on='product_id')
 
-#Poner los nombres en inglés
-products = products.merge(translations, on='product_category_name', how="left")
-orders = orders.merge(products['product_id','product_category_name_english'], on='product_id', how='left')
-orders.dropna(inplace=True, subset=['product_category_name_english'])
-
-
-transactions = orders.groupby("order_id").product_category_name_english.unique()
-#Aqui asumimos que solo vaya a haber una compra de la categoria
-
-transactions = transactions.tolist()
-
-counts = [len(transaction) for transaction in transactions]
-
-encoder = TransactionEncoder()
-
-
-encoder.fit(transactions)
-
-# Transform lists into one-hot encoded array.
-onehot = encoder.transform(transactions)
-
-# Convert array to pandas DataFrame.
-onehot = pd.DataFrame(onehot, columns = encoder.columns_)
-
-from mlxtend.frequent_patterns import apriori
-
-frequent_itemsets = apriori(onehot, min_support = 0.00001, use_colnames=True)
-
-frequent_itemsets = apriori(onehot, min_support = 0.00001, max_len = 2, use_colnames = True)
-
-from mlxtend.frequent_patterns import association_rules
-
-rules = association_rules(frequent_itemsets, metric = 'confidence', min_threshold = 0.01)
-
-rules = rules[rules['consequent support'] > 0.095]
-
+df = pd.merge(df_clients, df_products, on='order_id')
 
 
 # Presentación de filas
@@ -95,6 +72,26 @@ with D:
     D.header("Analisis de mercado")
 with E:
     E.markdown("")
+
+    total_category_value = pd.DataFrame(df_clean.groupby(by=["product_category_name_english"])["payment_value"].sum().reset_index().sort_values(by=['payment_value'],ascending=False))
+
+    #Añadimos el precio a dolares, a la fecha de (06-13-2022) en el que 1 REAL = 0.195340 REALES
+    total_category_value["USD"] = total_category_value["payment_value"] * 1.75506
+    category_value10 = total_category_value.nlargest(10, 'payment_value')
+
+    fig = plt.figure(figsize =([14, 14])) 
+    sns.set_style('darkgrid')
+    plt.style.use('ggplot')
+    g = sns.barplot(x=category_value10['product_category_name_english'], y=category_value10['USD'], palette='Greens_r', orient="v")
+    plt.title('Total de Dinero Generado por el TOP 10', size=36, y=1.03)
+    plt.yticks(fontsize=18, color='gray');
+    plt.ylabel('Cantidad en USD', fontsize=24)
+    plt.ticklabel_format(style='plain', axis='y')
+    plt.xlabel('product_category', fontsize=24)
+    plt.xticks(fontsize=18, rotation=45)
+    g.spines['top'].set_visible(False)
+    g.spines['right'].set_visible(False)
+    plt.show()
 
 
 #---------------------------------------------------------#
