@@ -4,8 +4,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import json
+from urllib.request import urlopen
+
 
 import streamlit as st
+import streamlit.components.v1 as components
+
 from PIL import Image
 
 
