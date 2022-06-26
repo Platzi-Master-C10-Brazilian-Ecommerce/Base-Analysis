@@ -44,6 +44,9 @@ df_products = pd.merge(sellers_total, products_total, on='product_id')
 
 df = pd.merge(df_clients, df_products, on='order_id')
 
+dt=df.select_dtypes(include='object').fillna('None')
+df_clean = df.fillna(dt)
+
 
 # Presentación de filas
 
