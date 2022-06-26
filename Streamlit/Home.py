@@ -85,19 +85,23 @@ option = st.selectbox(
      'Display query',
      ('Count products', 'Payments products', 'percapita'))
 
-if option =="Count products":
-    st.header("")
-    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Geoespatial-Drafts/count.html", 'r', encoding='utf-8')
+if option == "Count products":
+
+    st.header("Count products")
+    HtmlFile = open("Streamlit/Geoespatial-Drafts/count.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
-elif option =="Payments products":  
-    st.header("") 
-    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Geoespatial-Drafts/payment.html", 'r', encoding='utf-8')
+
+elif option == "Payments products": 
+
+    st.header("Payments Products") 
+    HtmlFile = open("Streamlit/Geoespatial-Drafts/payment.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
+
 else:
-    st.header("")
-    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Geoespatial-Drafts/percapitamap.html", 'r', encoding='utf-8')
+    st.header("Percapita")
+    HtmlFile = open("Streamlit/Geoespatial-Drafts/percapitamap.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 
