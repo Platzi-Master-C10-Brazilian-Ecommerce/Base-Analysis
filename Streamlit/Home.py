@@ -32,7 +32,7 @@ orders =  pd.read_csv("Streamlit/Datasets/olist_orders_dataset.csv")
 
 #Poner los nombres en inglés
 products = products.merge(translations, on='product_category_name', how="left")
-orders = orders.merge(products[['product_id','product_category_name_english']], on='product_id', how='left')
+orders = orders.merge(products['product_id','product_category_name_english'], on='product_id', how='left')
 orders.dropna(inplace=True, subset=['product_category_name_english'])
 
 
