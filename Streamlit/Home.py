@@ -87,17 +87,17 @@ option = st.selectbox(
 
 if option =="Count products":
     st.header("")
-    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Data-Analysis-Drafts/Emmanuel HTML/count.html", 'r', encoding='utf-8')
+    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Geoespatial-Drafts/count.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 elif option =="Payments products":  
     st.header("") 
-    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Data-Analysis-Drafts/Emmanuel HTML/payment.html", 'r', encoding='utf-8')
+    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Geoespatial-Drafts/payment.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 else:
     st.header("")
-    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Data-Analysis-Drafts/Emmanuel HTML/payment.html", 'r', encoding='utf-8')
+    HtmlFile = open("Data-Analysis-for-Brazilian-E-commerce/Geoespatial-Drafts/percapitamap.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 
