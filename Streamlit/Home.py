@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 from urllib.request import urlopen
+import mlxtend
 
 
 import streamlit as st
