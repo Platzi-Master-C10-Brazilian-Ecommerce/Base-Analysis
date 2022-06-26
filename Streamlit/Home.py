@@ -13,9 +13,26 @@ import streamlit.components.v1 as components
 
 from PIL import Image
 
-
 # Configuración de la pagina
 st.set_page_config(page_title="Bussines Intelligence Team",page_icon="📈",layout="wide")
+
+
+#Datos importados
+
+#Para el a priori
+from mlxtend.preprocessing import TransactionEncoder
+
+
+translations = 
+
+products = 
+
+orders = 
+
+
+
+
+
 
 
 # Presentación de filas
@@ -67,40 +84,47 @@ with I:
 
 J, K ,L = st.columns(3)
 
-st.header("A priori")
 
 with J:
-    pass
+    st.markdown('Regla de asociación')
+    bar7 = go.Figure(data=[go.Table(
+        header=dict(values=list(churn.columns),
+                    fill_color='darkblue',
+                    align='center'),
+        cells=dict(values=[churn.Orders, churn.Customers, churn.Percentage],
+                fill_color='DarkSlateBlue',
+                align='center'))])
+
+    J.write(bar7)
+    
 
 #---------------------------------------------------------#
-
-M, O = st.columns(2)
 
 st.header("Maps")
 
 with urlopen('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson') as response:
-    Brazil = json.load(response) # Javascrip object notation 
+    Brazil = json.load(response) 
 
 option = st.selectbox(
-     'Display query',
+     'Seleccionar variable',
      ('Count products', 'Payments products', 'percapita'))
 
-if option == "Count products":
+if option == "Purchases by state":
 
-    st.header("Count products")
+    st.header("Número de compras por estado")
     HtmlFile = open("Streamlit/Geoespatial-Drafts/count.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 
-elif option == "Payments products": 
+elif option == "Average amount of money spent per state": 
 
-    st.header("Payments Products") 
+    st.header("Media de dinero gastado por estado") 
     HtmlFile = open("Streamlit/Geoespatial-Drafts/payment.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 
 else:
-    st.header("Percapita")
+    st.header("PIB Percapita)")
     HtmlFile = open("Streamlit/Geoespatial-Drafts/percapitamap.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
