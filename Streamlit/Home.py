@@ -118,18 +118,6 @@ with I:
 J, K ,L = st.columns(3)
 
 
-with J:
-    st.markdown('Regla de asociación')
-    bar7 = go.Figure(data=[go.Table(
-        header=dict(values=list(rules.columns),
-                    fill_color='darkblue',
-                    align='center'),
-        cells=dict(values=[rules.antecedents, rules.consequents, rules.support],
-                fill_color='DarkSlateBlue',
-                align='center'))])
-
-    J.write(bar7)
-    
 
 #---------------------------------------------------------#
 
