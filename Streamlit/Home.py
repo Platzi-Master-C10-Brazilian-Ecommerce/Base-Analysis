@@ -35,7 +35,7 @@ orders_payments = pd.read_csv("Streamlit/Datasets/olist_order_payments_dataset.c
 
 A, B, C = st.columns(3)
 
-A.image(Image.open("Streamlit/Images/PM_logo.png"))
+B.image(Image.open("Streamlit/Images/PM_logo.png"))
 
 with C:
     st.markdown('''# Platzi Master Cohort 10
@@ -45,7 +45,7 @@ with C:
     - Juan Rincon       - Robert Barrios
     ''')
 
-with B:
+with A:
     st.title("Bussines Intelligence")
     st.markdown("Conocimiento del negocio para tomar buenas desiciones basadas en datos")
 
@@ -71,7 +71,7 @@ if option == "Purchases by state":
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 
-elif option == "Average amount of money spent per state": 
+elif option == "Average amount of money spent per states": 
 
     st.header("Media de dinero gastado por estado") 
     HtmlFile = open("Streamlit/Geoespatial-Drafts/payment.html", 'r', encoding='utf-8')
