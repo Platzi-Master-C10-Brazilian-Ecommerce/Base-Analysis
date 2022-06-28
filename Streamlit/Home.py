@@ -47,7 +47,7 @@ with C:
 
 with B:
     st.title("Bussines Intelligence")
-    st.markdown("")
+    st.markdown("Conocimiento del negocio para tomar buenas desiciones basadas en datos")
 
 
 #-------------------------------------------------------#
