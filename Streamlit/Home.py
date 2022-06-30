@@ -140,7 +140,7 @@ a = plt.show()
 
 with G:
     G.markdown("Grafica de poblacion")
-    st.write(a)
+    #st.write(a)
 
 #---------------------------------------------------------#
 
