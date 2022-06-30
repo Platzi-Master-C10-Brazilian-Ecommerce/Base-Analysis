@@ -7,6 +7,8 @@ import seaborn as sns
 import json
 from urllib.request import urlopen
 import mlxtend
+from psycopg2 import DatabaseError
+from sqlalchemy import create_engine
 
 
 import streamlit as st
@@ -51,6 +53,58 @@ with A:
 
 
 #-------------------------------------------------------#
+
+# Sobre Brasil
+
+engine = create_engine('postgresql://usuario_consulta:platzicohort10@platzicohort10.cig2rbjhhqmz.us-east-1.rds.amazonaws.com/Brazilian_e_commerce')
+with engine.connect() as con:
+  rs = con.execute("SELECT * FROM olist_geolocation_dataset") # query que vamos a realizar
+  df = pd.DataFrame(rs.fetchall()) # lectura de las filas, hay mas opciones
+  df.columns = rs.keys() # asignar al nombre de las columnas del dataframe los nombres de las columnas de la tabla
+
+payments = pd.read_sql_query("SELECT * FROM olist_order_payments_dataset", engine) # Primer argumento es el query, segundo es el engine
+reviews = pd.read_sql_query("SELECT * FROM olist_order_reviews_dataset", engine)
+orders = pd.read_sql_query("SELECT * FROM olist_orders_dataset", engine)
+products = pd.read_sql_query("SELECT * FROM olist_products_dataset", engine)
+sellers = pd.read_sql_query("SELECT * FROM olist_sellers_dataset", engine)
+category = pd.read_sql_query("SELECT * FROM product_category_name_translation", engine)
+geolocation = pd.read_sql_query("SELECT * FROM olist_geolocation_dataset", engine)
+customers = pd.read_sql_query("SELECT * FROM olist_order_customers_dataset", engine)
+items = pd.read_sql_query("SELECT * FROM olist_order_items_dataset", engine)
+states = pd.read_sql_query("SELECT * FROM states", engine)
+regions = pd.read_sql_query("SELECT * FROM regions", engine)
+cities = pd.read_sql_query("SELECT * FROM cities", engine)
+new_customers = pd.read_sql_query("SELECT * FROM new_customers", engine)
+new_geolocation = pd.read_sql_query("SELECT * FROM new_geolocation", engine)
+new_sellers = pd.read_sql_query("SELECT * FROM new_sellers", engine)
+poblacion_brasil = pd.read_sql_query("SELECT * FROM poblacion_brasil", engine)
+
+df = poblacion_brasil.merge(states, how='inner', on='id_state')
+df_2010 = df[(df['anio'] >= 2010)] # La tabla contenía otros años, sin embargo solo se tomó en cuenta el último registro oficial en 2010 a nivel estatal
+
+df_2010['n_0_14']= (df['prop_0_14'] * df['poblacion_total'])/100 # Se crearon nuevas variables para convertir las proporciones en valores absolutos
+df_2010['n_15_64']= (df['prop_15_64'] * df['poblacion_total'])/100 
+df_2010['n_65_up']= (df['prop_65_up'] * df['poblacion_total'])/100 
+df_2010['n_15_59']= (df['prop_15_59'] * df['poblacion_total'])/100 
+df_2010['n_60_up']= (df['prop_60_up'] * df['poblacion_total'])/100 
+
+df2 = df_2010.groupby(['id_region']).sum() # Se agruparon los datos de población por región y se eligieron las variables de interés
+df2 = df2.merge(regions, how='inner', on='id_region')
+df3 = df2[['id_region','name_region','poblacion_total','poblacion_hombres','poblacion_mujeres','nacimientos','n_0_14','n_15_64','n_65_up','n_15_59','n_60_up']]
+df3['prop_0_14'] = (df3['n_0_14'] / df3['poblacion_total']) * 100 # ya agrupado por región se convirtió de nuevo a proporciones los valores por grupo de edad
+df3['prop_15_64'] = (df3['n_15_64'] / df3['poblacion_total']) * 100
+df3['prop_65_up'] = (df3['n_65_up'] / df3['poblacion_total']) * 100
+df3['prop_15_59'] = (df3['n_15_59'] / df3['poblacion_total']) * 100
+df3['prop_60_up'] = (df3['n_60_up'] / df3['poblacion_total']) * 100
+
+df4 = df3[['id_region','name_region','poblacion_total','poblacion_hombres','poblacion_mujeres','nacimientos','prop_0_14','prop_15_64','prop_65_up','prop_15_59','prop_60_up']]
+    
+#-----------------------------------------------------------------------#   
+
+D, E = st.columns(2)
+
+with E:     
+    st.write(df4) # Esta es la tabla que se utilizó para el gráfico
 
 
 #---------------------------------------------------------#
