@@ -139,7 +139,8 @@ plt.title('Percentage distribution of population \n in Brazil by Regions (2010)'
 a = plt.show()
 
 with G:
-    st.write(G)
+    G.markdown("Grafica de poblacion")
+    st.write(a)
 
 #---------------------------------------------------------#
 
