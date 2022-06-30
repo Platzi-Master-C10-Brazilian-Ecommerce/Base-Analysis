@@ -112,6 +112,12 @@ E.image(Image.open("Streamlit/Images/regiones.png"))
 
 
 with F:
+    st.write(df4)
+
+
+G = st.columns(1)
+
+with G:
     df5 = df4[['name_region', 'prop_0_14', 'prop_15_64', 'prop_65_up']]
 
     df5.plot(
