@@ -51,6 +51,7 @@ with A:
     st.title("Bussines Intelligence")
     st.markdown("Conocimiento del negocio para tomar buenas desiciones basadas en datos")
 
+st.markdown("***")
 
 #-------------------------------------------------------#
 
@@ -103,9 +104,36 @@ df4 = df3[['id_region','name_region','poblacion_total','poblacion_hombres','pobl
 
 D, E = st.columns(2)
 
-with E:     
-    st.write(df4) # Esta es la tabla que se utilizó para el gráfico
+with D:
+    st.markdown("Analisis de la poblacion de Brasil")
 
+
+with E:     
+    st.write(df4) 
+
+
+F = st.columns(1)
+
+with F:
+    df5 = df4[['name_region', 'prop_0_14', 'prop_15_64', 'prop_65_up']]
+
+    df5.plot(
+        x = 'name_region',
+        kind = 'bar',
+        stacked = True,
+        mark_right = True,
+        color= ('silver','gray','black'),
+        figsize=(6,4),
+        fontsize= 15
+        )
+
+    plt.xticks(rotation=45, fontsize=8)
+    plt.ylabel("Percentage", fontsize=16)
+    plt.xlabel("Region", fontsize=16)
+    plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+    plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
+
+    st.write(plt.show())
 
 #---------------------------------------------------------#
 
