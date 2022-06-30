@@ -102,17 +102,14 @@ df4 = df3[['id_region','name_region','poblacion_total','poblacion_hombres','pobl
     
 #-----------------------------------------------------------------------#   
 
-D, E = st.columns(2)
+D, E, F = st.columns(3)
 
 with D:
     st.markdown("Analisis de la poblacion de Brasil")
 
 
-with E:     
-    st.write(df4) 
+E.image(Image.open("Streamlit/Images/regiones.png"))
 
-
-F = st.columns(1)
 
 with F:
     df5 = df4[['name_region', 'prop_0_14', 'prop_15_64', 'prop_65_up']]
@@ -133,7 +130,9 @@ with F:
     plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
     plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
 
-    st.write(plt.show())
+    poblacion = plt.show()
+
+    st.write(poblacion)
 
 #---------------------------------------------------------#
 
