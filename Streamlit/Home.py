@@ -114,9 +114,6 @@ E.image(Image.open("Streamlit/Images/regiones.png"))
 with F:
     st.write(df4)
 
-
-G = st.columns(1)
-
 #--------------------------------------------------------------------#
 
 df5 = df4[['name_region', 'prop_0_14', 'prop_15_64', 'prop_65_up']]
@@ -138,9 +135,11 @@ plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(
 plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
 a = plt.show()
 
+G, H = st.columns(2)
+
 with G:
     G.markdown("Grafica de poblacion")
-    #st.write(a)
+    st.write(a)
 
 #---------------------------------------------------------#
 
