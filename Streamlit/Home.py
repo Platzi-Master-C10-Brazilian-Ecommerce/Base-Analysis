@@ -143,6 +143,42 @@ with G:
 
 #---------------------------------------------------------#
 
+I, J, K = st.columns(3)
+
+#Clientes con las ordenes
+
+clients_total = pd.merge(customers, orders, on='customer_id')
+orders_total = pd.merge(orders_payments, orders_reviews, on='order_id')
+df_clients = pd.merge(clients_total, orders_total, on='order_id')
+
+#Vendedores con los productos
+
+sellers_total = pd.merge(sellers, order_items, on='seller_id')
+products_total = pd.merge(products, category_name_translation, on='product_category_name')
+df_products = pd.merge(sellers_total, products_total, on='product_id')
+df = pd.merge(df_clients, df_products, on='order_id')
+
+dt=df.select_dtypes(include='object').fillna('None')
+df_clean = df.fillna(dt)
+
+with I:
+    fig = plt.figure(figsize =([14, 14])) 
+    sns.set_style('darkgrid')
+    plt.style.use('ggplot')
+    g = sns.barplot(x=category_value10['product_category_name_english'], y=category_value10['USD'], palette='Greens_r', orient="v")
+    plt.title('Total de Dinero Generado por el TOP 10', size=36, y=1.03)
+    plt.yticks(fontsize=18, color='gray');
+    plt.ylabel('Cantidad en USD', fontsize=24)
+    plt.ticklabel_format(style='plain', axis='y')
+    plt.xlabel('product_category', fontsize=24)
+    plt.xticks(fontsize=18, rotation=45)
+    g.spines['top'].set_visible(False)
+    g.spines['right'].set_visible(False)
+    plt.show()
+
+    st.write(fig)
+
+
 st.header("Maps")
 
 with urlopen('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson') as response:
