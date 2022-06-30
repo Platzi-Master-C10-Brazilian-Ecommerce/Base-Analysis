@@ -117,28 +117,29 @@ with F:
 
 G = st.columns(1)
 
+#--------------------------------------------------------------------#
+
+df5 = df4[['name_region', 'prop_0_14', 'prop_15_64', 'prop_65_up']]
+
+df5.plot(
+    x = 'name_region',
+    kind = 'bar',
+    stacked = True,
+    mark_right = True,
+    color= ('silver','gray','black'),
+    figsize=(6,4),
+    fontsize= 15
+    )
+
+plt.xticks(rotation=45, fontsize=8)
+plt.ylabel("Percentage", fontsize=16)
+plt.xlabel("Region", fontsize=16)
+plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
+a = plt.show()
+
 with G:
-    df5 = df4[['name_region', 'prop_0_14', 'prop_15_64', 'prop_65_up']]
-
-    df5.plot(
-        x = 'name_region',
-        kind = 'bar',
-        stacked = True,
-        mark_right = True,
-        color= ('silver','gray','black'),
-        figsize=(6,4),
-        fontsize= 15
-        )
-
-    plt.xticks(rotation=45, fontsize=8)
-    plt.ylabel("Percentage", fontsize=16)
-    plt.xlabel("Region", fontsize=16)
-    plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-    plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
-
-    poblacion = plt.show()
-
-    st.write(poblacion)
+    st.write(G)
 
 #---------------------------------------------------------#
 
