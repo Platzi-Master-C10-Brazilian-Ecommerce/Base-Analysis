@@ -180,6 +180,9 @@ with I:
     st.write(fig)
 
 with J:
+
+    total_payment_value = pd.DataFrame(df_clean.groupby(by=["customer_state"])["payment_value"].sum().reset_index().sort_values(by=['payment_value'],ascending=False))
+    
     fig = plt.figure(figsize =([14, 14])) 
     sns.set_style('darkgrid')
     plt.style.use('ggplot')
