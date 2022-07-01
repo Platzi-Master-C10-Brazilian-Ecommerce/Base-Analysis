@@ -191,7 +191,7 @@ with J:
     plt.xlabel('Estado', fontsize=24)
     plt.xticks(fontsize=18, rotation=45)
     g.spines['top'].set_visible(False)
-    g.spines['right'].set_visible(False))
+    g.spines['right'].set_visible(False)
 
     st.write(fig)
 
