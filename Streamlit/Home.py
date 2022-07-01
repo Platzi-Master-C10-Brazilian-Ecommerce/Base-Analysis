@@ -179,7 +179,12 @@ with I:
 
     st.write(fig)
 
+
 with J:
+    st.markdown("EXPLICACIÓN")
+
+
+with K:
 
     total_payment_value = pd.DataFrame(df_clean.groupby(by=["customer_state"])["payment_value"].sum().reset_index().sort_values(by=['payment_value'],ascending=False))
     
@@ -199,7 +204,7 @@ with J:
     st.write(fig)
 
 
-st.header("Maps")
+st.header("Variables demograficas")
 
 with urlopen('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson') as response:
     Brazil = json.load(response) 
@@ -229,3 +234,36 @@ else:
     components.html(source_code, height = 600, scrolling=True)
 
 
+#-------------------------------------------------------#
+
+L,M = st.columns(2)
+
+with L:
+    payments_orders = payments.merge(orders, how="inner", on="order_id")
+    payments_orders_customers = payments_orders.merge(new_customers, how='inner', on='customer_id')
+    payments_orders_customers = payments_orders_customers.merge(states, how='inner', on=('id_state','id_region'))
+    payments_orders_customers = payments_orders_customers.merge(regions, how='inner', on='id_region')
+
+    df_payments = payments_orders_customers[['order_id',
+    'payment_type',
+    'payment_value',
+    'payment_installments',
+    'customer_id',
+    'customer_state',
+    'id_state',
+    'id_region',
+    'name_state',
+    'name_region']]
+
+    df_payments.groupby(["payment_type","name_region"]).sum() # contesta a la pregunta de cuanto se vende por región y tipo de pago
+
+    h = sns.catplot(x="name_region", y="payment_value",
+                col="payment_type",
+                data=df_payments.loc[df_payments['payment_value'] > 5], kind="violin",
+                height=8, aspect=.5);
+    
+
+    st.write(h)
+
+with M:
+    st.markdown("Explicación")
