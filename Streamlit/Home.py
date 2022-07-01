@@ -261,7 +261,8 @@ with L:
                 col="payment_type",
                 data=df_payments.loc[df_payments['payment_value'] > 5], kind="violin",
                 height=8, aspect=.5);
-    
+
+    h = sns.swarmplot(x="name_region", y="payment_value",col='payment_type', data=df_payments, color=".25")
 
     st.write(h)
 
