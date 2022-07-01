@@ -238,9 +238,8 @@ else:
 
 L,M = st.columns(2)
 
-with L:
 
-    L.image(Image.open("Streamlit/Images/Payments.png"))
+L.image(Image.open("Streamlit/Images/Payments.png"))
 
 with M:
     st.markdown("Explicación")
