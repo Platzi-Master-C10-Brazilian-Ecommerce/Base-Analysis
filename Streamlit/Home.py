@@ -162,19 +162,36 @@ dt=df.select_dtypes(include='object').fillna('None')
 df_clean = df.fillna(dt)
 
 with I:
-    fig = plt.figure(figsize =([14, 14])) 
+    dict = {'index': 'customer_state','customer_state': 'Count'}
+    total_customer_state = pd.DataFrame(df_clean['customer_state'].value_counts().reset_index().rename(columns=dict).sort_values(by=['Count'],ascending=False))
+
+    fig = plt.figure(figsize =([12, 12])) 
     sns.set_style('darkgrid')
     plt.style.use('ggplot')
-    g = sns.barplot(x=category_value10['product_category_name_english'], y=category_value10['USD'], palette='Greens_r', orient="v")
-    plt.title('Total de Dinero Generado por el TOP 10', size=36, y=1.03)
+    g = sns.barplot(x=total_customer_state['customer_state'], y=total_customer_state['Count'], palette='Greens_r', orient="v")
+    plt.title('Distribución de consumidores por Estado', size=36, y=1.03)
     plt.yticks(fontsize=18, color='gray');
-    plt.ylabel('Cantidad en USD', fontsize=24)
-    plt.ticklabel_format(style='plain', axis='y')
-    plt.xlabel('product_category', fontsize=24)
+    plt.ylabel('Número de clientes', fontsize=24)
+    plt.xlabel('Estados', fontsize=24)
     plt.xticks(fontsize=18, rotation=45)
     g.spines['top'].set_visible(False)
     g.spines['right'].set_visible(False)
-    plt.show()
+
+    st.write(fig)
+
+with J:
+    fig = plt.figure(figsize =([14, 14])) 
+    sns.set_style('darkgrid')
+    plt.style.use('ggplot')
+    g = sns.barplot(x=total_payment_value['customer_state'], y=total_payment_value['payment_value'], palette='Greens_r', orient="v")
+    plt.title('Total de dinero Facturado por Estado', size=36, y=1.03)
+    plt.yticks(fontsize=18, color='gray');
+    plt.ylabel('Dinero Facturado', fontsize=24)
+    plt.ticklabel_format(style='plain', axis='y')
+    plt.xlabel('Estado', fontsize=24)
+    plt.xticks(fontsize=18, rotation=45)
+    g.spines['top'].set_visible(False)
+    g.spines['right'].set_visible(False))
 
     st.write(fig)
 
