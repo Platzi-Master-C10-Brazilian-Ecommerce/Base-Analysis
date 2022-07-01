@@ -239,32 +239,33 @@ else:
 L,M = st.columns(2)
 
 with L:
-    payments_orders = payments.merge(orders, how="inner", on="order_id")
-    payments_orders_customers = payments_orders.merge(new_customers, how='inner', on='customer_id')
-    payments_orders_customers = payments_orders_customers.merge(states, how='inner', on=('id_state','id_region'))
-    payments_orders_customers = payments_orders_customers.merge(regions, how='inner', on='id_region')
+    # payments_orders = payments.merge(orders, how="inner", on="order_id")
+    # payments_orders_customers = payments_orders.merge(new_customers, how='inner', on='customer_id')
+    # payments_orders_customers = payments_orders_customers.merge(states, how='inner', on=('id_state','id_region'))
+    # payments_orders_customers = payments_orders_customers.merge(regions, how='inner', on='id_region')
 
-    df_payments = payments_orders_customers[['order_id',
-    'payment_type',
-    'payment_value',
-    'payment_installments',
-    'customer_id',
-    'customer_state',
-    'id_state',
-    'id_region',
-    'name_state',
-    'name_region']]
+    # df_payments = payments_orders_customers[['order_id',
+    # 'payment_type',
+    # 'payment_value',
+    # 'payment_installments',
+    # 'customer_id',
+    # 'customer_state',
+    # 'id_state',
+    # 'id_region',
+    # 'name_state',
+    # 'name_region']]
 
-    df_payments.groupby(["payment_type","name_region"]).sum() # contesta a la pregunta de cuanto se vende por región y tipo de pago
+    # df_payments.groupby(["payment_type","name_region"]).sum() # contesta a la pregunta de cuanto se vende por región y tipo de pago
 
-    h = sns.catplot(x="name_region", y="payment_value",
-                col="payment_type",
-                data=df_payments.loc[df_payments['payment_value'] > 5], kind="violin",
-                height=8, aspect=.5);
+    # h = sns.catplot(x="name_region", y="payment_value",
+    #             col="payment_type",
+    #             data=df_payments.loc[df_payments['payment_value'] > 5], kind="violin",
+    #             height=8, aspect=.5);
 
-    h = sns.swarmplot(x="name_region", y="payment_value",col='payment_type', data=df_payments, color=".25")
+    #h = sns.swarmplot(x="name_region", y="payment_value",col='payment_type', data=df_payments, color=".25")
 
-    st.write(h)
+
+    L.image(Image.open("Streamlit/Images/Payments.png"))
 
 with M:
     st.markdown("Explicación")
