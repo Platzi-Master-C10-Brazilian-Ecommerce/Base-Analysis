@@ -127,16 +127,18 @@ df5.plot(
     figsize=(6,4),
     fontsize= 15
     )
-fig = plt.figure(figsize =([12, 12]))
-plt.xticks(rotation=45, fontsize=8)
-plt.ylabel("Percentage", fontsize=16)
-plt.xlabel("Region", fontsize=16)
-plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
+
 
 G, H = st.columns(2)
 
 with G:
+    fig = plt.figure(figsize =([12, 12]))
+    plt.xticks(rotation=45, fontsize=8)
+    plt.ylabel("Percentage", fontsize=16)
+    plt.xlabel("Region", fontsize=16)
+    plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+    plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
+    plt.show()
     st.write(fig)
 
 #---------------------------------------------------------#
