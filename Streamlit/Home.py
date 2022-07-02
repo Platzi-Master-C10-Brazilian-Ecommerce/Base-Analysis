@@ -42,9 +42,9 @@ B.image(Image.open("Streamlit/Images/PM_logo.png"))
 with C:
     st.markdown('''# Platzi Master Cohort 10
     Bussines Intelligence Team
-    - [Julián Castro](https://www.linkedin.com/in/jcasttrop/)     - [Ricardo Escamilla](https://www.linkedin.com/in/drescamilla/)
-    - [Emmanuel Escobar](https://www.linkedin.com/in/emmanuelescobaravalos/)  - [Marco Rocha]()
-    - [Juan Rincon]()       - [Robert Barrios](https://www.linkedin.com/in/robert-yesid-barrios-acendra-0ba22317b/)
+    - Julián Castro     - Ricardo Escamilla
+    - Emmanuel Escobar  - Marco Rocha
+    - Juan Rincon       - Robert Barrios
     ''')
 
 with A:
@@ -112,15 +112,6 @@ E.image(Image.open("Streamlit/Images/regiones.png"))
 
 with F:
     st.write(df4)
-
-#--------------------------------------------------------------------#
-
-# G = st.columns(1)
-
-# with G:
-#     st.write("Sobre la poblacion de Brasil")
-
-
 
 #---------------------------------------------------------#
 
@@ -278,3 +269,6 @@ U.image(Image.open("Streamlit/Images/Apriori.png"))
 
 with V:
     V.markdown("Sobre los top 10 y las reglas de asociacion")
+
+#---------------------------------------------------------------------#
+
