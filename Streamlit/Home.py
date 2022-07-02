@@ -237,7 +237,7 @@ st.markdown("Ley de Pareto")
 
 S,T = st.columns(2)
 
-S.image(Image.open("Streamlit/Images/Pareto"))
+S.image(Image.open("Streamlit/Images/Pareto.png"))
 
 with T:
     T.markdown("Explicacion Pareto")
