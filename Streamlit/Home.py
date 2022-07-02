@@ -269,3 +269,12 @@ st.markdown("***")
 
 #-------------------------------------------------------------------#
 
+st.markdown("A priori Algorithm")
+
+P, U, V = st.columns(3)
+
+P.image(Image.open("Streamlit/Images/Top10.png"))
+U.image(Image.open("Streamlit/Images/Apriori.png"))
+
+with V:
+    V.markdown("Sobre los top 10 y las reglas de asociacion")
