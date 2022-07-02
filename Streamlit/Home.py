@@ -117,7 +117,8 @@ with F:
 
 G = st.columns(1)
 
-G.markdown("Sobre la poblacion de Brasil")
+with G:
+    st.write("Sobre la poblacion de Brasil")
 
 
 
