@@ -231,6 +231,20 @@ with M:
 
 st.markdown("***")
 
+#--------------------------------------------------------#
+
+st.markdown("Ley de Pareto")
+
+S,T = st.columns(2)
+
+S.image(Image.open("Streamlit/Images/Pareto"))
+
+with T:
+    T.markdown("Explicacion Pareto")
+
+
+#-------------------------------------------------------
+st.markdown("***")
 #------------------------------------------------------#
 
 st.markdown("SOBRE LAS CALIFICACIONES")
