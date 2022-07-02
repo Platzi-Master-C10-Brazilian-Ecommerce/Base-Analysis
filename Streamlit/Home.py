@@ -127,19 +127,17 @@ df5.plot(
     figsize=(6,4),
     fontsize= 15
     )
-
+fig = plt.figure(figsize =([12, 12]))
 plt.xticks(rotation=45, fontsize=8)
 plt.ylabel("Percentage", fontsize=16)
 plt.xlabel("Region", fontsize=16)
 plt.legend(('0 a 14 years', '15 a 64 years', 'up to 65 years'), bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.title('Percentage distribution of population \n in Brazil by Regions (2010)', fontsize=20, y=1.1)
-a = plt.show()
 
 G, H = st.columns(2)
 
 with G:
-    G.markdown("Grafica de poblacion")
-    st.write(a)
+    st.write(fig)
 
 #---------------------------------------------------------#
 
@@ -241,5 +239,12 @@ L,M = st.columns(2)
 
 L.image(Image.open("Streamlit/Images/Payments.png"))
 
+
 with M:
-    st.markdown("Explicación")
+    st.markdown("Explicación de VISA SOBRE LAS TAREJTAS")
+
+#------------------------------------------------------#
+
+N = st.columns(1)
+
+
