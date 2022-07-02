@@ -228,15 +228,17 @@ with M:
 
 #------------------------------------------------------#
 
+st.markdown("***")
+
+#------------------------------------------------------#
+
 st.markdown("SOBRE LAS CALIFICACIONES")
 
-N,O,P = st.columns(3)
+N,O = st.columns(2)
 
 N.image(Image.open("Streamlit/Images/UnidadesVendidas.png"))
 O.image(Image.open("Streamlit/Images/ScorePromedio.png"))
 
-with P:
-    st.markdown("Explicar que no hay relacion entre la cantidad de compras y el score promedio")
 
 
 Q, R = st.columns(2)
