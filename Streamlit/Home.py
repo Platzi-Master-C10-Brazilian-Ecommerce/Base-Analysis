@@ -115,10 +115,10 @@ with F:
 
 #--------------------------------------------------------------------#
 
-G = st.columns(1)
+# G = st.columns(1)
 
-with G:
-    st.write("Sobre la poblacion de Brasil")
+# with G:
+#     st.write("Sobre la poblacion de Brasil")
 
 
 
