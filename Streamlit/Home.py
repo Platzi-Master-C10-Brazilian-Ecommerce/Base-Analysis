@@ -49,8 +49,9 @@ with C:
 
 with A:
     st.title("Bussines Intelligence")
-    st.markdown("Conocimiento del negocio para tomar buenas desiciones basadas en datos")
-
+    st.markdown("### Tomar desiciones inteligentes basadas en datos")
+    st.markdown("Durante cuatro meses el equipo de BI aprendió a sacarle provecho a los datos mediante diversas herramientas y tecnologias de analisis para potenciar tu negocio")
+    st.markdown("Este analisis recoge las conclusiones para OLIST, un comercio electronicco de Brasil con más de 100000 registros entre el 20016 y el 2018")
 st.markdown("***")
 
 #-------------------------------------------------------#
