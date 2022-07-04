@@ -43,16 +43,18 @@ with C:
     st.markdown("# Platzi Master Cohort 10)
     st.markdown("## Bussines Intelligence Team")
 
-    st.markdown("
-    - Julián Castro     - Ricardo Escamilla
+    st.markdown('''
+    - [Julián Castro](Julian.com)     - Ricardo Escamilla
     - Emmanuel Escobar  - Marco Rocha
-    - Juan Rincon       - Robert Barrios")
+    - Juan Rincon       - Robert Barrios''')
+
 
 with A:
     st.title("Bussines Intelligence")
     st.markdown("### Tomar desiciones inteligentes basadas en datos")
     st.markdown("Durante cuatro meses el equipo de BI aprendió a **sacarle provecho a los datos** mediante diversas herramientas y tecnologias de analisis **para potenciar tu negocio**")
     st.markdown("Este trabajo recoge las conclusiones para **OLIST, un comercio electronico de Brasil con más de 100000 registros entre el 2016 y el 2018**")
+
 st.markdown("***")
 
 #-------------------------------------------------------#
