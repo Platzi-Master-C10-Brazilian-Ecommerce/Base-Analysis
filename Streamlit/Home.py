@@ -51,7 +51,7 @@ with A:
     st.title("Bussines Intelligence")
     st.markdown("### Tomar desiciones inteligentes basadas en datos")
     st.markdown("Durante cuatro meses el equipo de BI aprendió a **sacarle provecho a los datos** mediante diversas herramientas y tecnologias de analisis **para potenciar tu negocio**")
-    st.markdown("Este analisis recoge las conclusiones para **OLIST, un comercio electronico de Brasil con más de 100000 registros entre el 2016 y el 2018**")
+    st.markdown("Este trabajo recoge las conclusiones para **OLIST, un comercio electronico de Brasil con más de 100000 registros entre el 2016 y el 2018**")
 st.markdown("***")
 
 #-------------------------------------------------------#
@@ -157,7 +157,8 @@ with J:
     st.markdown("Brasil es uno de los paises más grandes del mundo, abarca el 45% del america del sur, en su extensión viven más de 200 millones de habitantes; debido a la gran extensión del pais se divide en cinco regiones.")
     st.markdown("Cuenta con 25 habitantes por Km2, siendo uno de los paises menos densamente poblados.")
     st.markdown("*Usando datos externos* pudimos ver que **la region sur y sureste son la que mayor ingreso por persona tienen**. Haciendose evidente la desigualdad del pais, donde el **10% de sus habitantes tiene el 50% del producto nacional**")
-
+    
+    st.markdown("Especialmente, El movimientos del comercio está concentrado en 6 estados. **¿Que hace especiales a nivel demografico estos estados?**")
 
 with K:
 
@@ -222,7 +223,6 @@ L.image(Image.open("Streamlit/Images/Payments.png"))
 with M:
     st.markdown("Tras analizar estas graficas, podemos ver que hay una gran influencia en las compras realizadas debido a la cantidad de dinero que tienen los brasileños")
     st.markdown("Sumado a eso, la concentración de dinero en las regiones del sur se ve reflejado en los pedidos realizados y el retraso en las entregas.")
-    st.markdown("Especialmente, El movimientos del comercio está concentrado en 6 estados.")
 
     st.markdown("Si hacemos un analisis de los medios del pago, podemos ver que estas dos regiones son las que tienen mayor acceso a estos, de acuerdo al banco de brasil, el 86% de los ciudadanos tienen acceso a un telefono, pero el 56% tienen acceso a un medio de pago")
 #------------------------------------------------------#
@@ -231,14 +231,19 @@ st.markdown("***")
 
 #--------------------------------------------------------#
 
-st.markdown("Ley de Pareto")
+st.markdown("### Ley de Pareto")
 
 S,T = st.columns(2)
 
 S.image(Image.open("Streamlit/Images/Pareto.jpg"))
 
 with T:
-    T.markdown("Explicacion Pareto")
+    st.markdown("Hay un gran mercado en Brasil para los comercios electronicos, en dos años, OLIST registró 112650 ordenes, siendo salud y belleza la categorias más comprada de productos")
+
+    st.markdown("En estos dos años se registraron 3053 vendedores")
+
+    st.markdown("De acuerdo a Pareto, el 80% de los resultados son producidos por el 20% de las acciones. Y OLIST no deja de cunplir esta ley. ")
+    st.markdown("El 80% de las ventas (86680) fueron realizados por 535 vendedores. ")
 
 
 #-------------------------------------------------------
