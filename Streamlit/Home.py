@@ -50,8 +50,8 @@ with C:
 with A:
     st.title("Bussines Intelligence")
     st.markdown("### Tomar desiciones inteligentes basadas en datos")
-    st.markdown("Durante cuatro meses el equipo de BI aprendió a sacarle provecho a los datos mediante diversas herramientas y tecnologias de analisis para potenciar tu negocio")
-    st.markdown("Este analisis recoge las conclusiones para OLIST, un comercio electronicco de Brasil con más de 100000 registros entre el 20016 y el 2018")
+    st.markdown("Durante cuatro meses el equipo de BI aprendió a **sacarle provecho a los datos** mediante diversas herramientas y tecnologias de analisis **para potenciar tu negocio**")
+    st.markdown("Este analisis recoge las conclusiones para **OLIST, un comercio electronicco de Brasil con más de 100000 registros entre el 20016 y el 2018**")
 st.markdown("***")
 
 #-------------------------------------------------------#
@@ -154,7 +154,9 @@ with I:
 
 
 with J:
-    st.markdown("EXPLICACIÓN")
+    st.markdown("Brasil es uno de los paises más grandes del mundo, abarca el 45% del america del sur, en su extensión viven más de 200 millones de habitantes; debido a la gran extensión del pais se divide en cinco regiones.")
+    st.markdown("Cuenta con 25 habitantes por Km2, siendo uno de los paises menos densamente poblados.")
+    st.markdown("*Usando datos externos* pudimos ver que **la region sur y sureste son la que mayor ingreso por persona tienen**. Haciendose evidente la desigualdad del pais, donde el **10% de sus habitantes tiene el 50% del producto nacional**")
 
 
 with K:
