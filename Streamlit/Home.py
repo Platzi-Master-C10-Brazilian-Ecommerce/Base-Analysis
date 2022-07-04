@@ -282,7 +282,9 @@ P.image(Image.open("Streamlit/Images/Top10.png"))
 U.image(Image.open("Streamlit/Images/Apriori.png"))
 
 with V:
-    V.markdown("Sobre los top 10 y las reglas de asociacion")
+    V.markdown("Viendo el top 10 productos más comprados (donde se concentran la mayoria de las compras del comercio electronico) queremos saber si hay alguna tendencia de compras")
+    st.markdown("**En este [analisis](https://share.streamlit.io/felipesalda/brazilian-e-commerce/main/dashboard.py) se puede ver que el 97% de usuarios hace solo una compra en OLIST**")
+    st.markdown("Para usar reglas de asociacion deberiamos tener más datos que pueden relacionarse en una sola compra, pero con el 3% nos damos cuenta que hay un patron de compras")
 
 #---------------------------------------------------------------------#
 
