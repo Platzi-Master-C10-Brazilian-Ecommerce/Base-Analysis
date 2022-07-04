@@ -40,12 +40,13 @@ A, B, C = st.columns(3)
 B.image(Image.open("Streamlit/Images/PM_logo.png"))
 
 with C:
-    st.markdown('''# Platzi Master Cohort 10
-    Bussines Intelligence Team
+    st.markdown("# Platzi Master Cohort 10)
+    st.markdown("## Bussines Intelligence Team")
+
+    st.markdown("
     - Julián Castro     - Ricardo Escamilla
     - Emmanuel Escobar  - Marco Rocha
-    - Juan Rincon       - Robert Barrios
-    ''')
+    - Juan Rincon       - Robert Barrios")
 
 with A:
     st.title("Bussines Intelligence")
