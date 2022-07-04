@@ -51,7 +51,7 @@ with A:
     st.title("Bussines Intelligence")
     st.markdown("### Tomar desiciones inteligentes basadas en datos")
     st.markdown("Durante cuatro meses el equipo de BI aprendió a **sacarle provecho a los datos** mediante diversas herramientas y tecnologias de analisis **para potenciar tu negocio**")
-    st.markdown("Este analisis recoge las conclusiones para **OLIST, un comercio electronicco de Brasil con más de 100000 registros entre el 20016 y el 2018**")
+    st.markdown("Este analisis recoge las conclusiones para **OLIST, un comercio electronico de Brasil con más de 100000 registros entre el 2016 y el 2018**")
 st.markdown("***")
 
 #-------------------------------------------------------#
@@ -180,23 +180,24 @@ with K:
 
 #--------------------------------------------------------------------------------------#    
 
-st.header("Variables demograficas")
+st.header("Visualizaciones demograficas por estado")
+st.markdown("Elegimos tres variables que afectan directamente a las compras del comercio electronico, puedes verlas en el mapa desplegable")
 
 with urlopen('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson') as response:
     Brazil = json.load(response) 
 
 option = st.selectbox(
      'Seleccionar variable',
-     ('Purchases by state', 'Average amount of money spent per states', 'percapita'))
+     ('Compras por estado', 'Media de dinero gastada', 'Ingreso por persona'))
 
-if option == "Purchases by state":
+if option == "Compras por estado":
 
     st.header("Número de compras por estado")
     HtmlFile = open("Streamlit/Geoespatial-Drafts/count.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
 
-elif option == "Average amount of money spent per states": 
+elif option == "Media de dinero gastada": 
 
     st.header("Media de dinero gastado por estado") 
     HtmlFile = open("Streamlit/Geoespatial-Drafts/payment.html", 'r', encoding='utf-8')
@@ -204,7 +205,7 @@ elif option == "Average amount of money spent per states":
     components.html(source_code, height = 600, scrolling=True)
 
 else:
-    st.header("PIB Percapita)")
+    st.header("Ingreso por persona)")
     HtmlFile = open("Streamlit/Geoespatial-Drafts/percapitamap.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 600, scrolling=True)
@@ -219,8 +220,11 @@ L.image(Image.open("Streamlit/Images/Payments.png"))
 
 
 with M:
-    st.markdown("Explicación de VISA SOBRE LAS TAREJTAS")
+    st.markdown("Tras analizar estas graficas, podemos ver que hay una gran influencia en las compras realizadas debido a la cantidad de dinero que tienen los brasileños")
+    st.markdown("Sumado a eso, la concentración de dinero en las regiones del sur se ve reflejado en los pedidos realizados y el retraso en las entregas.")
+    st.markdown("Especialmente, El movimientos del comercio está concentrado en 6 estados.")
 
+    st.markdown("Si hacemos un analisis de los medios del pago, podemos ver que estas dos regiones son las que tienen mayor acceso a estos, de acuerdo al banco de brasil, el 86% de los ciudadanos tienen acceso a un telefono, pero el 56% tienen acceso a un medio de pago")
 #------------------------------------------------------#
 
 st.markdown("***")
