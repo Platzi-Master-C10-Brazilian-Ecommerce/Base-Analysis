@@ -250,7 +250,7 @@ with T:
 st.markdown("***")
 #------------------------------------------------------#
 
-st.markdown("SOBRE LAS CALIFICACIONES")
+st.markdown("### Sobre las calificaciones")
 
 N,O = st.columns(2)
 
@@ -264,7 +264,9 @@ Q, R = st.columns(2)
 Q.image(Image.open("Streamlit/Images/Puntuaciones.png"))
 
 with R:
-    st.markdown("El analisis de puntuaciones puede ser extendido aqui:")
+    st.markdown("Encontramos que el numero de unidades vendidas no tiene influencia directa sobre las calificaciones realizadas por los usuarios.")
+    st.markdown("Se evidencia que las calificaciones son en su mayoria positivas; y si bien, nuestro analaisis no se enfocó en un analisis de entregas; pero se muestra que la mayoria de calificaciones negativas se debe a las entregas retrasadas")
+    st.markdown("Le recomendamos a OLIST cambiar sus sistema de puntuación en una escala de tres opiniones")
 
 #-------------------------------------------------------------------#
 
