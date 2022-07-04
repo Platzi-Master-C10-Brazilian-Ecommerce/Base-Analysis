@@ -40,7 +40,7 @@ A, B, C = st.columns(3)
 B.image(Image.open("Streamlit/Images/PM_logo.png"))
 
 with C:
-    st.markdown("# Platzi Master Cohort 10)
+    st.markdown("# Platzi Master Cohort 10")
     st.markdown("## Bussines Intelligence Team")
 
     st.markdown('''
