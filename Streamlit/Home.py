@@ -44,9 +44,9 @@ with C:
     st.markdown("## Bussines Intelligence Team")
 
     st.markdown('''
-    - [Julián Castro](Julian.com)     - Ricardo Escamilla
-    - Emmanuel Escobar  - Marco Rocha
-    - Juan Rincon       - Robert Barrios''')
+    - [Julián Castro](https://www.linkedin.com/in/jcasttrop/)     - [Ricardo Escamilla](https://www.linkedin.com/in/drescamilla/)
+    - [Emmanuel Escobar](https://www.linkedin.com/in/emmanuelescobaravalos/)  - [Marco Rocha](https://www.linkedin.com/in/marcoru/)
+    - Juan Rincon       - [Robert Barrios](https://www.linkedin.com/in/robert-yesid-barrios-acendra-0ba22317b/)''')
 
 
 with A:
