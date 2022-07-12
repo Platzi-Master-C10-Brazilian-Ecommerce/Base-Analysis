@@ -6,7 +6,6 @@
 
 ## Table of Contents
 [Our Team](#our-team) 
-[About the analysis](#About-the-analysis)
 
 ****
 ## Our team
@@ -22,5 +21,3 @@
 - [Luis Fernando Laris Pardo]()
 
 ***
-
-### About the analysis
